@@ -83,7 +83,7 @@ type ResultGame struct {
 	Away            Team   `json:"away"`
 	League          League `json:"league"`
 	TimeStatus      string `json:"time_status"`
-	SS              string `json:"ss"`
+	SS              string `json:"ss"` // Score string
 	ConfirmedAt     string `json:"confirmed_at"`
 	HasLineup       int    `json:"has_lineup"`
 	InplayCreatedAt string `json:"inplay_created_at"`
@@ -111,6 +111,7 @@ func main() {
 	var prematch CricketPreMatch
 	var result CricketResult
 
+	// Read files
 	if err := readJSON("testdata/cricket_prematch.json", &prematch); err != nil {
 		fmt.Println("Failed to load pre-match:", err)
 		return
@@ -120,61 +121,61 @@ func main() {
 		return
 	}
 
-	fmt.Println("✅ Loaded pre-match and result data successfully.")
+	fmt.Println("Loaded pre-match and result data successfully.")
 
 	if len(prematch.Result) == 0 || len(result.Results) == 0 {
-		fmt.Println("⚠️ No match data found.")
+		fmt.Println("No match data found.")
 		return
 	}
 
 	game := prematch.Result[0]
 	final := result.Results[0]
 
-	fmt.Printf("\n🎯 Match: %s vs %s\n", game.Home.Name, game.Away.Name)
+	fmt.Printf("Match: %s vs %s\n", game.Home.Name, game.Away.Name)
 	fmt.Println("Evaluating selections...\n")
 
 	scoreParts := strings.Split(final.SS, "-")
 	if len(scoreParts) != 2 {
-		fmt.Println("❌ Invalid final score format:", final.SS)
+		fmt.Println("Invalid final score format:", final.SS)
 		return
 	}
 
-	homeScore := toInt(scoreParts[0])
-	awayScore := toInt(scoreParts[1])
+	homeScore := scoreParts[0]
+	awayScore := scoreParts[1]
 
-	// Final result
-	var matchResult string
-	if homeScore > awayScore {
-		matchResult = "home"
-	} else if awayScore > homeScore {
-		matchResult = "away"
-	} else {
-		matchResult = "draw"
-	}
-
-	// Evaluate markets
+	// Sample 1: Match Winner
 	for _, header := range game.Headers {
 		for _, market := range header.Markets {
-			switch {
-			case market.Name == "Match Winner":
-				fmt.Println("🏆 Market: Match Winner")
+			if market.Name == "Match Winner" {
+				fmt.Println("Market: Match Winner")
+
 				for _, odd := range market.Odds {
 					fmt.Printf("- Selection: %s at odds %s\n", odd.Label, odd.Value)
-					if (odd.Label == game.Home.Name && matchResult == "home") ||
-						(odd.Label == game.Away.Name && matchResult == "away") ||
-						(strings.ToLower(odd.Label) == "draw" && matchResult == "draw") {
+
+					winTeam := ""
+					if final.SS != "" {
+						hs, as := toInt(homeScore), toInt(awayScore)
+						if hs > as {
+							winTeam = game.Home.Name
+						} else if as > hs {
+							winTeam = game.Away.Name
+						}
+					}
+
+					if odd.Label == winTeam {
 						fmt.Println("  ✅ Result: WON")
 					} else {
 						fmt.Println("  ❌ Result: LOST")
 					}
 				}
+			}
 
-			case strings.Contains(market.Name, "Over/Under"):
-				fmt.Println("\n📈 Market:", market.Name)
+			if strings.Contains(market.Name, "Over/Under") {
+				fmt.Println("\nMarket:", market.Name)
 				for _, odd := range market.Odds {
 					fmt.Printf("- Selection: %s at odds %s\n", odd.Label, odd.Value)
 
-					total := homeScore + awayScore
+					total := toInt(homeScore) + toInt(awayScore)
 					var threshold float64
 					var over bool
 
@@ -190,34 +191,6 @@ func main() {
 						fmt.Println("  ✅ Result: WON")
 					} else {
 						fmt.Println("  ❌ Result: LOST")
-					}
-				}
-
-			case strings.Contains(market.Name, "Double Chance"):
-				fmt.Println("\n🛡️ Market:", market.Name)
-				for _, odd := range market.Odds {
-					fmt.Printf("- Selection: %s at odds %s\n", odd.Label, odd.Value)
-					switch odd.Label {
-					case "1X":
-						if matchResult == "home" || matchResult == "draw" {
-							fmt.Println("  ✅ Result: WON")
-						} else {
-							fmt.Println("  ❌ Result: LOST")
-						}
-					case "X2":
-						if matchResult == "away" || matchResult == "draw" {
-							fmt.Println("  ✅ Result: WON")
-						} else {
-							fmt.Println("  ❌ Result: LOST")
-						}
-					case "12":
-						if matchResult != "draw" {
-							fmt.Println("  ✅ Result: WON")
-						} else {
-							fmt.Println("  ❌ Result: LOST")
-						}
-					default:
-						fmt.Println("  ❓ Unknown selection")
 					}
 				}
 			}

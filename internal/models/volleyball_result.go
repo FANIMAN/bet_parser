@@ -1,5 +1,6 @@
 package models
 
+// volleyball result
 type VolleyballResultRoot struct {
 	Success int                `json:"success"`
 	Results []VolleyballResult `json:"results"`

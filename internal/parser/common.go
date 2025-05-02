@@ -1,5 +1,8 @@
 package parser
 
+// parser/common
+
+
 // League represents the details of a league
 type League struct {
 	ID   string `json:"id"`

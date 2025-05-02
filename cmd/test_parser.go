@@ -7,7 +7,7 @@ import (
 	"betting-parser/internal/parser"
 )
 
-func main() {
+func mainn() {
 	// Test parsing Cricket Prematch data
 	cricketData, err := parser.ParseCricketPrematch("./testdata/cricket_prematch.json")
 	if err != nil {

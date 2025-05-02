@@ -1,5 +1,6 @@
 package models
 
+// cricket result
 // CricketResultRoot represents the root of cricket_result.json
 type CricketResultRoot struct {
 	Success int             `json:"success"`
