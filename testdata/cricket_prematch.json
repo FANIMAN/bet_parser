@@ -1,0 +1,76 @@
+{
+  "result": [
+    {
+      "away": {
+        "cc": "au",
+        "id": "102",
+        "image_id": "1002",
+        "name": "Australia"
+      },
+      "headers": [
+        {
+          "markets": [
+            {
+              "name": "Match Winner",
+              "odds": [
+                {
+                  "label": "India",
+                  "value": "1.50"
+                },
+                {
+                  "label": "Australia",
+                  "value": "2.60"
+                }
+              ]
+            },
+            {
+              "name": "Total Runs Over/Under",
+              "odds": [
+                {
+                  "label": "Over 200.5",
+                  "value": "1.90"
+                },
+                {
+                  "label": "Under 200.5",
+                  "value": "1.80"
+                }
+              ]
+            }
+          ],
+          "name": "Main"
+        }
+      ],
+      "home": {
+        "cc": "in",
+        "id": "101",
+        "image_id": "1001",
+        "name": "India"
+      },
+      "id": "10001",
+      "league": {
+        "cc": "in",
+        "id": "1",
+        "name": "World Cricket League"
+      },
+      "odds": {
+        "pre_match": [
+          {
+            "bookmakers": [
+              {
+                "name": "Bet365",
+                "odds": {
+                  "1": "1.50",
+                  "2": "2.60"
+                }
+              }
+            ],
+            "label": "Winner"
+          }
+        ]
+      },
+      "time": "2025-05-01 10:00:00",
+      "time_status": "0"
+    }
+  ],
+  "success": 1
+}

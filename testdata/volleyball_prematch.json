@@ -1,0 +1,81 @@
+{
+  "result": [
+    {
+      "away": {
+        "cc": "br",
+        "id": "202",
+        "image_id": "2002",
+        "name": "Brazil"
+      },
+      "headers": [
+        {
+          "markets": [
+            {
+              "name": "1X2",
+              "odds": [
+                {
+                  "label": "USA",
+                  "value": "1.80"
+                },
+                {
+                  "label": "Draw",
+                  "value": "3.20"
+                },
+                {
+                  "label": "Brazil",
+                  "value": "2.10"
+                }
+              ]
+            },
+            {
+              "name": "Correct Score",
+              "odds": [
+                {
+                  "label": "3-1",
+                  "value": "4.50"
+                },
+                {
+                  "label": "3-2",
+                  "value": "5.00"
+                }
+              ]
+            }
+          ],
+          "name": "Main"
+        }
+      ],
+      "home": {
+        "cc": "us",
+        "id": "201",
+        "image_id": "2001",
+        "name": "USA"
+      },
+      "id": "20001",
+      "league": {
+        "cc": "us",
+        "id": "2",
+        "name": "World Volleyball Cup"
+      },
+      "odds": {
+        "pre_match": [
+          {
+            "bookmakers": [
+              {
+                "name": "Bet365",
+                "odds": {
+                  "1": "1.80",
+                  "2": "2.10",
+                  "X": "3.20"
+                }
+              }
+            ],
+            "label": "1X2"
+          }
+        ]
+      },
+      "time": "2025-05-01 13:00:00",
+      "time_status": "0"
+    }
+  ],
+  "success": 1
+}

@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "away": {
+        "cc": "au",
+        "id": "102",
+        "image_id": "1002",
+        "name": "Australia"
+      },
+      "bet365_id": "987654",
+      "confirmed_at": "1746122977",
+      "extra": {
+        "stadium_data": {
+          "capacity": "66000",
+          "city": "Kolkata",
+          "country": "India",
+          "googlecoords": "22.5645,88.3433",
+          "id": "10",
+          "name": "Eden Gardens"
+        }
+      },
+      "has_lineup": 1,
+      "home": {
+        "cc": "in",
+        "id": "101",
+        "image_id": "1001",
+        "name": "India"
+      },
+      "id": "10001",
+      "inplay_created_at": "1746107172",
+      "inplay_updated_at": "1746121199",
+      "league": {
+        "cc": "in",
+        "id": "1",
+        "name": "World Cricket League"
+      },
+      "sport_id": "3",
+      "ss": "220-210",
+      "time": "1746108000",
+      "time_status": "3"
+    }
+  ],
+  "success": 1
+}

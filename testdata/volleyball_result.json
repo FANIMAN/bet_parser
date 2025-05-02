@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "away": {
+        "cc": "br",
+        "id": "202",
+        "image_id": "2002",
+        "name": "Brazil"
+      },
+      "home": {
+        "cc": "us",
+        "id": "201",
+        "image_id": "2001",
+        "name": "USA"
+      },
+      "id": "20001",
+      "league": {
+        "cc": "us",
+        "id": "2",
+        "name": "World Volleyball Cup"
+      },
+      "sport_id": "2",
+      "ss": "3-2",
+      "time": "1746115200",
+      "time_status": "3"
+    }
+  ],
+  "success": 1
+}
